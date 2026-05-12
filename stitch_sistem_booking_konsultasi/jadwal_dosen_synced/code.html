@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AcademiaConsult - Cari Jadwal Dosen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#3b82f6',
+                            container: '#1e3a8a',
+                            'on-primary-container': '#dbeafe',
+                            'fixed': '#60a5fa'
+                        },
+                        surface: {
+                            DEFAULT: '#0f172a',
+                            container: '#1e293b',
+                            'container-low': '#0f172a',
+                            'container-lowest': '#020617',
+                            'container-high': '#334155',
+                            'variant': '#334155'
+                        },
+                        'on-surface': {
+                            DEFAULT: '#f8fafc',
+                            variant: '#94a3b8'
+                        },
+                        outline: {
+                            DEFAULT: '#475569',
+                            variant: '#334155'
+                        }
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "display": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Public Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 100px repeat(5, 1fr);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col py-6 z-50 w-64 bg-surface-container dark:bg-surface-container-low border-r border-outline-variant dark:border-outline-variant">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<h1 class="text-lg font-headline font-bold text-on-surface dark:text-on-surface-variant">Portal Akademik</h1>
+<p class="text-xs text-on-surface-variant opacity-70">Sistem Terpadu</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out font-label text-label-large" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container dark:bg-primary-container text-on-primary-container rounded-xl px-4 py-3 mx-2 font-label text-label-large" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span>Jadwal Konsultasi</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out font-label text-label-large" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>Riwayat</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out font-label text-label-large" href="#">
+<span class="material-symbols-outlined">pending_actions</span>
+<span>Permintaan</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out font-label text-label-large" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Pengaturan</span>
+</a>
+</nav>
+<div class="mt-auto px-4 space-y-1">
+<button class="w-full mb-6 py-3 px-4 bg-primary text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+<span>Booking Baru</span>
+</button>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Bantuan</span>
+</a>
+<a class="flex items-center gap-3 text-red-400 px-4 py-3 hover:bg-red-500/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Keluar</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 flex justify-between items-center h-16 px-6 w-full ml-64 max-w-[calc(100%-16rem)] bg-surface dark:bg-surface-container-lowest text-primary dark:text-primary-fixed border-b border-outline-variant dark:border-outline-variant shadow-sm dark:shadow-none z-40">
+<div class="flex items-center gap-4">
+<span class="text-xl font-black text-primary dark:text-primary-fixed tracking-tight">AcademiaConsult</span>
+</div>
+<div class="flex-1 max-w-md mx-8">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">search</span>
+<input class="w-full bg-surface-container border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary" placeholder="Cari nama dosen atau departemen..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-20 p-8">
+<div class="max-w-7xl mx-auto space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div>
+<h2 class="text-3xl font-bold font-headline tracking-tight mb-1">Cari Jadwal Dosen</h2>
+<p class="text-on-surface-variant">Temukan waktu konsultasi yang tepat dengan pembimbing Anda.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-surface-container px-4 py-2 rounded-xl flex items-center gap-2 border border-outline-variant">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+<select class="bg-transparent border-none focus:ring-0 text-sm font-medium">
+<option>Semua Departemen</option>
+<option>Teknik Informatika</option>
+<option>Sistem Informasi</option>
+<option>Arsitektur</option>
+<option>Teknik Sipil</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Sidebar: Lecturer Info -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-surface-container rounded-3xl p-6 border border-outline-variant overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-green-500/20 text-green-400 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Aktif</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-2xl overflow-hidden mb-4 border-2 border-primary/20 p-1">
+<img class="w-full h-full object-cover rounded-xl" data-alt="A professional portrait of a senior academic professor in a modern office environment. The lighting is soft and natural, emphasizing a welcoming and authoritative atmosphere. The background shows blurred bookshelves and certificates, maintaining a sophisticated academic aesthetic with cool blue and grey tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgGE-VhPF3V8xCZ1O5jLP3huQkQDMgPrHA9JpKoRp_W7x8SZ-zcyIlsctUyT7H51tovtNYrcsb7qCMYTSJ94_hYwJpaE7kPc_mS-w_14yMTBJWnzPap3rB6irX-b5f0oEnYSF8pEyhArz84B9cduaGVGI3m4D56SM83bnDG2W0N69fVq8AfNI1fQcIsqjWwIx6olO-ZHAsnIi1PFvTsq5D_lUOYBUR9NODBD_-PWQ_qitfSZfC8_YmVkW4Ytm9VRpNC7fTxUu71kw"/>
+</div>
+<h3 class="text-xl font-bold font-headline">Dr. Aris Setiawan, M.T.</h3>
+<p class="text-primary font-medium text-sm mb-4">Departemen Teknik Informatika</p>
+<div class="flex gap-2 mb-6">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-label">Kecerdasan Buatan</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-label">Machine Learning</span>
+</div>
+<div class="w-full grid grid-cols-2 gap-3 text-left">
+<div class="bg-surface-container-lowest p-3 rounded-2xl">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest mb-1">Rata-rata Respon</p>
+<p class="font-bold">2 Jam</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-2xl">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest mb-1">Total Konsultasi</p>
+<p class="font-bold">124 Sesi</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Selected Slot Details -->
+<div class="bg-primary/5 rounded-3xl p-6 border border-primary/20 shadow-xl shadow-primary/5">
+<h4 class="font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                            Detail Slot Terpilih
+                        </h4>
+<div id="selection-placeholder">
+<div class="space-y-4">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/30">
+<span class="text-on-surface-variant text-sm">Waktu</span>
+<span class="font-semibold">Selasa, 24 Okt • 09:00</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/30">
+<span class="text-on-surface-variant text-sm">Durasi</span>
+<span class="font-semibold">45 Menit</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/30">
+<span class="text-on-surface-variant text-sm">Lokasi</span>
+<span class="font-semibold">Lab Riset AI</span>
+</div>
+<button class="w-full mt-4 py-3 bg-primary text-white rounded-xl font-bold hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all">
+                                    Ajukan Booking
+                                </button>
+<p class="text-[10px] text-center text-on-surface-variant mt-2">
+                                    Persetujuan akan diberikan maksimal 24 jam sebelum jadwal.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Canvas: Weekly Calendar -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface-container rounded-3xl border border-outline-variant overflow-hidden">
+<!-- Calendar Header -->
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-4">
+<h3 class="text-lg font-bold font-headline">Jadwal Mingguan</h3>
+<div class="flex bg-surface-container-high rounded-lg p-1">
+<button class="p-1 hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<span class="px-3 text-xs font-bold self-center">23 - 27 Okt 2023</span>
+<button class="p-1 hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+<span class="text-xs font-medium text-on-surface-variant">Tersedia</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-surface-container-high"></div>
+<span class="text-xs font-medium text-on-surface-variant">Booked</span>
+</div>
+</div>
+</div>
+<!-- Calendar Body -->
+<div class="overflow-x-auto">
+<div class="min-w-[800px]">
+<!-- Day Headers -->
+<div class="calendar-grid bg-surface-container-lowest/50 border-b border-outline-variant">
+<div class="p-4"></div>
+<div class="p-4 text-center">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Senin</p>
+<p class="text-lg font-bold">23</p>
+</div>
+<div class="p-4 text-center bg-primary/5">
+<p class="text-[10px] text-primary font-bold uppercase tracking-tighter">Selasa</p>
+<p class="text-lg font-bold text-primary">24</p>
+</div>
+<div class="p-4 text-center">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Rabu</p>
+<p class="text-lg font-bold">25</p>
+</div>
+<div class="p-4 text-center">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Kamis</p>
+<p class="text-lg font-bold">26</p>
+</div>
+<div class="p-4 text-center">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Jumat</p>
+<p class="text-lg font-bold">27</p>
+</div>
+</div>
+<!-- Time Slots -->
+<div class="relative">
+<!-- Rows -->
+<div class="calendar-grid group">
+<div class="p-4 text-xs font-bold text-on-surface-variant border-r border-outline-variant/30 flex items-center justify-center">08:00</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20 bg-surface-container-lowest/20"></div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20">
+<div class="h-full w-full bg-primary/20 border border-primary/40 rounded-xl p-2 cursor-pointer hover:bg-primary/30 transition-all group/slot">
+<p class="text-[10px] font-bold text-primary">Tersedia</p>
+<p class="text-[10px] opacity-70">R. Dosen 1</p>
+</div>
+</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20 bg-surface-container-lowest/20"></div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20">
+<div class="h-full w-full bg-surface-container-high border border-outline/30 rounded-xl p-2 opacity-50 cursor-not-allowed">
+<p class="text-[10px] font-bold">Booked</p>
+</div>
+</div>
+<div class="p-1 border-b h-20"></div>
+</div>
+<div class="calendar-grid">
+<div class="p-4 text-xs font-bold text-on-surface-variant border-r border-outline-variant/30 flex items-center justify-center">09:00</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20">
+<div class="h-full w-full bg-surface-container-high border border-outline/30 rounded-xl p-2 opacity-50 cursor-not-allowed">
+<p class="text-[10px] font-bold">Booked</p>
+</div>
+</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20 bg-primary/10">
+<div class="h-full w-full bg-primary border-2 border-primary-container rounded-xl p-2 shadow-lg shadow-primary/20">
+<p class="text-[10px] font-bold text-white">Dipilih</p>
+<p class="text-[10px] text-white/80">Lab AI</p>
+</div>
+</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20">
+<div class="h-full w-full bg-primary/20 border border-primary/40 rounded-xl p-2 cursor-pointer hover:bg-primary/30 transition-all">
+<p class="text-[10px] font-bold text-primary">Tersedia</p>
+</div>
+</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20"></div>
+<div class="p-1 border-b h-20 bg-surface-container-lowest/20"></div>
+</div>
+<div class="calendar-grid">
+<div class="p-4 text-xs font-bold text-on-surface-variant border-r border-outline-variant/30 flex items-center justify-center">10:00</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20"></div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20">
+<div class="h-full w-full bg-primary/20 border border-primary/40 rounded-xl p-2 cursor-pointer hover:bg-primary/30 transition-all">
+<p class="text-[10px] font-bold text-primary">Tersedia</p>
+</div>
+</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20"></div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20">
+<div class="h-full w-full bg-surface-container-high border border-outline/30 rounded-xl p-2 opacity-50 cursor-not-allowed">
+<p class="text-[10px] font-bold">Booked</p>
+</div>
+</div>
+<div class="p-1 border-b h-20">
+<div class="h-full w-full bg-primary/20 border border-primary/40 rounded-xl p-2 cursor-pointer hover:bg-primary/30 transition-all">
+<p class="text-[10px] font-bold text-primary">Tersedia</p>
+</div>
+</div>
+</div>
+<div class="calendar-grid">
+<div class="p-4 text-xs font-bold text-on-surface-variant border-r border-outline-variant/30 flex items-center justify-center">11:00</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20 bg-surface-container-lowest/20"></div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20 bg-surface-container-lowest/20"></div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20">
+<div class="h-full w-full bg-primary/20 border border-primary/40 rounded-xl p-2 cursor-pointer hover:bg-primary/30 transition-all">
+<p class="text-[10px] font-bold text-primary">Tersedia</p>
+</div>
+</div>
+<div class="p-1 border-r border-outline-variant/30 border-b h-20 bg-surface-container-lowest/20"></div>
+<div class="p-1 border-b h-20"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional Info Cards -->
+<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-5 rounded-2xl border border-outline-variant bg-surface-container flex gap-4 items-start">
+<div class="p-3 bg-primary/10 rounded-xl">
+<span class="material-symbols-outlined text-primary">event_available</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">Ketentuan Konsultasi</h5>
+<p class="text-xs text-on-surface-variant leading-relaxed">Pastikan Anda telah menyiapkan draf materi konsultasi minimal 2 jam sebelum sesi dimulai.</p>
+</div>
+</div>
+<div class="p-5 rounded-2xl border border-outline-variant bg-surface-container flex gap-4 items-start">
+<div class="p-3 bg-amber-500/10 rounded-xl">
+<span class="material-symbols-outlined text-amber-500">warning</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">Kebijakan Pembatalan</h5>
+<p class="text-xs text-on-surface-variant leading-relaxed">Pembatalan maksimal 1 jam sebelum jadwal. Ketidakhadiran tanpa kabar dapat memengaruhi reputasi akun.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Suppressed on this sub-page per logic, but adding a "Quick Help" small FAB if needed for UX) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-surface-container-high text-on-surface rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all border border-outline-variant z-50">
+<span class="material-symbols-outlined">support_agent</span>
+</button>
+</body></html>

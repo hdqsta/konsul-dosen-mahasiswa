@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#D0BCFF',
+                container: '#4F378B',
+                'on-primary-container': '#EADDFF'
+              },
+              surface: {
+                DEFAULT: '#1C1B1F',
+                variant: '#49454F',
+                'container-lowest': '#0F0D13',
+                'container-low': '#1D1B20',
+                'container': '#211F26',
+                'container-high': '#2B2930'
+              },
+              on: {
+                surface: '#E6E1E5',
+                'surface-variant': '#CAC4D0'
+              },
+              outline: {
+                DEFAULT: '#938F99',
+                variant: '#49454F'
+              }
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "display": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Public Sans"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #0F0D13;
+        color: #E6E1E5;
+      }
+    </style>
+</head>
+<body class="font-body">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col py-6 z-50 w-64 bg-surface-container dark:bg-surface-container-low border-r border-outline-variant dark:border-outline-variant">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">school</span>
+</div>
+<div>
+<h1 class="text-lg font-headline font-bold text-on-surface dark:text-on-surface-variant">Portal Akademik</h1>
+<p class="text-xs text-outline">Sistem Terpadu</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out font-label text-label-large" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out font-label text-label-large" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Jadwal Konsultasi</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container dark:bg-primary-container text-on-primary-container rounded-xl px-4 py-3 mx-2 font-label text-label-large" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>Riwayat</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out font-label text-label-large" href="#">
+<span class="material-symbols-outlined">pending_actions</span>
+<span>Permintaan</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant dark:hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out font-label text-label-large" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Pengaturan</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant transition-all font-label text-label-large" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Bantuan</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-variant transition-all font-label text-label-large text-error" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Keluar</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 bg-surface dark:bg-surface-container-lowest flex justify-between items-center h-16 px-6 z-40 border-b border-outline-variant dark:border-outline-variant shadow-sm dark:shadow-none">
+<div class="flex items-center">
+<span class="text-xl font-black text-primary dark:text-primary-fixed tracking-tight">AcademiaConsult</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-high border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Cari sesi atau dokumen..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<button class="flex items-center gap-2 p-1 pr-3 rounded-full hover:bg-surface-container-high transition-colors">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-surface font-bold">JD</div>
+<span class="text-sm font-medium">Jane Doe</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 p-8 min-h-screen">
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Header & Action Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-headline font-black tracking-tight text-on-surface">Riwayat Sesi Lengkap</h2>
+<p class="text-on-surface-variant mt-1">Kelola dan tinjau kembali semua interaksi akademik Anda.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high text-on-surface rounded-xl hover:bg-surface-variant transition-all font-medium border border-outline-variant">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                        Filter Sesi
+                    </button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary text-surface-container-lowest font-bold rounded-xl hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Unduh Laporan Kolektif
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Upcoming Session Banner (Hero Element) -->
+<div class="md:col-span-8 relative overflow-hidden rounded-3xl bg-primary-container text-on-primary-container p-8 group">
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<span class="px-3 py-1 bg-primary text-surface-container-lowest text-xs font-bold rounded-full uppercase tracking-wider mb-4 inline-block">Sesi Mendatang</span>
+<h3 class="text-3xl font-black mb-2">Bimbingan Tugas Akhir: Bab III &amp; IV</h3>
+<div class="flex flex-wrap gap-4 mt-4">
+<div class="flex items-center gap-2 bg-black/10 backdrop-blur-md px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined">event</span>
+<span class="text-sm font-medium">Besok, 14:00 WIB</span>
+</div>
+<div class="flex items-center gap-2 bg-black/10 backdrop-blur-md px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm font-medium">Dr. Ahmad Subarjo</span>
+</div>
+<div class="flex items-center gap-2 bg-black/10 backdrop-blur-md px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined">video_camera_front</span>
+<span class="text-sm font-medium">Zoom Meeting</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex gap-4">
+<button class="px-6 py-3 bg-white text-primary-container font-black rounded-xl hover:shadow-lg transition-all active:scale-95">Masuk Ruang Sesi</button>
+<button class="px-6 py-3 bg-transparent border border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all">Reschedule</button>
+</div>
+</div>
+<!-- Abstract Background Pattern -->
+<div class="absolute right-0 top-0 w-1/3 h-full opacity-20 pointer-events-none">
+<svg class="h-full w-full object-cover" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M44.7,-76.4C58.3,-69.2,70,-58.5,78.2,-45.5C86.4,-32.5,91.1,-17.2,90.4,-2.2C89.7,12.8,83.7,27.5,75.2,40.4C66.7,53.3,55.8,64.4,42.8,72.3C29.8,80.2,14.9,84.9,-0.6,85.9C-16.1,86.9,-32.2,84.2,-45.8,76.5C-59.3,68.9,-70.3,56.2,-77.8,42.1C-85.3,28,-89.2,12.5,-88.2,-2.7C-87.1,-17.9,-81.1,-32.8,-71.4,-44.8C-61.7,-56.8,-48.3,-65.9,-34.5,-73C-20.7,-80.1,-10.3,-85.2,2.5,-89.5C15.3,-93.8,31.1,-83.6,44.7,-76.4Z" fill="#FFFFFF" transform="translate(100 100)"></path>
+</svg>
+</div>
+</div>
+<!-- Session Stats -->
+<div class="md:col-span-4 grid grid-cols-2 gap-4">
+<div class="col-span-2 bg-surface-container-high rounded-3xl p-6 border border-outline-variant flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="text-outline font-medium">Total Sesi</span>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+</div>
+</div>
+<div>
+<span class="text-4xl font-black text-on-surface">42</span>
+<p class="text-xs text-outline mt-1">+4 sesi bulan ini</p>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-3xl p-6 border border-outline-variant">
+<span class="text-outline text-xs font-medium block mb-4 uppercase tracking-tighter">Selesai</span>
+<span class="text-2xl font-black text-on-surface">38</span>
+</div>
+<div class="bg-surface-container-high rounded-3xl p-6 border border-outline-variant">
+<span class="text-outline text-xs font-medium block mb-4 uppercase tracking-tighter">Dibatalkan</span>
+<span class="text-2xl font-black text-on-surface">4</span>
+</div>
+</div>
+<!-- History Table / Detailed List -->
+<div class="md:col-span-12 bg-surface-container rounded-3xl border border-outline-variant overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<h4 class="text-lg font-bold">Log Aktivitas Konsultasi</h4>
+<div class="flex items-center gap-2">
+<div class="flex rounded-lg bg-surface-container-lowest p-1">
+<button class="px-4 py-1.5 text-xs font-bold bg-primary-container text-on-primary-container rounded-md">Semua</button>
+<button class="px-4 py-1.5 text-xs font-medium text-outline hover:text-on-surface">Akademik</button>
+<button class="px-4 py-1.5 text-xs font-medium text-outline hover:text-on-surface">Beasiswa</button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-outline text-xs uppercase tracking-wider">
+<th class="px-6 py-4 font-bold">Tanggal &amp; Sesi</th>
+<th class="px-6 py-4 font-bold">Konsultan</th>
+<th class="px-6 py-4 font-bold">Status</th>
+<th class="px-6 py-4 font-bold">Catatan Dosen</th>
+<th class="px-6 py-4 font-bold text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">description</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">Review Literatur Bab II</div>
+<div class="text-xs text-outline">12 Okt 2023 • 09:00 - 10:30</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Felix" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged academic professor with glasses and a kind smile. The image is a stylized avatar with a soft gray background, consistent with a modern web application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGer0UKAs06qTm95RBWpYchKkrp2drxcvl0b6yURAS4NRipuPP5H0IaLiWKiRTb090h79Gw43CnrSFNGBGShMf1yIMfJk9BbTV2pM0vMT5LoxRUB4A-QHwAnVOVdHYystjMwRiLwIshBSuNeKH7U5xxhWCE5s_7qr2tLA2xhWkl6dxWd667OgTJy-WLrcr2y-XHysXD0cs-9nXvKzw7HDTLO-K9ulG_leqbmnkcVM92fuEhhfStIDLFPWfFRqhsMDKRHDqHh11FiI"/>
+</div>
+<span class="text-sm font-medium">Prof. Budi Santoso</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-900/30 text-green-400 text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                                            Selesai
+                                        </span>
+</td>
+<td class="px-6 py-5 max-w-xs">
+<p class="text-sm text-on-surface-variant line-clamp-2 italic">"Argumen di sub-bab 2.1 perlu diperkuat dengan data terbaru dari jurnal bereputasi tahun 2023..."</p>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Lihat Detail">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 text-outline hover:bg-surface-variant rounded-lg transition-colors" title="Unduh Sertifikat/Laporan">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">Persiapan Beasiswa IISMA</div>
+<div class="text-xs text-outline">05 Okt 2023 • 15:30 - 16:30</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Sasha" class="w-full h-full object-cover" data-alt="A professional headshot of a young woman consultant with a friendly and encouraging expression. The avatar is in a minimalist style with a clean aesthetic suited for an academic platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC0Uusn1CIZpXE2Ayc7eekWfFB5xnY2vMNZrNkvGB3zzxwwvi3qQ5QUJ2C3mZORBPhKyzQZ0SnbDw3Px_Flc-NjniDG1Y5NmJH1esRMIX31rXro1d5RDHxbDh483dli0LZpbt1KjhUwOCN7LYy77v5qls7xJfIEnmV-q3cW4umbNwEHxajtt_XFrTlJw8W-cxnDECsZjiuHf63_Jl2kqWOrny8QbqoupKKIMvDSZ2Pd4Rx4pkKgjc_PGk_wheTdkQUDndf4x60_dk"/>
+</div>
+<span class="text-sm font-medium">Siti Rahmawati, M.Ed</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-900/30 text-green-400 text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                                            Selesai
+                                        </span>
+</td>
+<td class="px-6 py-5 max-w-xs">
+<p class="text-sm text-on-surface-variant line-clamp-2 italic">"Essay pribadi sudah sangat bagus. Fokus pada proofreading terakhir untuk tata bahasa..."</p>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 text-outline hover:bg-surface-variant rounded-lg transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">code</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">Debugging Proyek UAS</div>
+<div class="text-xs text-outline">28 Sep 2023 • 10:00 - 11:30</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Charlie" class="w-full h-full object-cover" data-alt="An avatar of a tech consultant with a modern, professional look. The style is clean and flat, set against a subtle dark theme background that fits the application's visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK3BlhJJ3NkYJQtc95NJWoHOmkI6UDbSpX4387EBDxyN_-m_uviPAMMpsly3vvETN7sTYyBah_s9PYc4CIzlUwaqjPUfoQPOcmOs0uHF5g_0u4Lj9lpJRQRKFpg1rEGErdoR6DrmPGsmxpRb24CMWfy4UXc6XcwsjeixIhaMmA_y9HcPMgZsR5_obB_vSta6CFXmqVJ1cNsAvY7hzIYcUKY8sny8s7Zq-fGwuYlZ7LhYVqUNUcpM_UE-ISleEoD4Zuwkfr_MASx-8"/>
+</div>
+<span class="text-sm font-medium">Dr. Eng. Haryanto</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-900/30 text-red-400 text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span>
+                                            Dibatalkan
+                                        </span>
+</td>
+<td class="px-6 py-5 max-w-xs">
+<p class="text-sm text-outline italic">Sesi dibatalkan oleh mahasiswa.</p>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-50">
+<button class="p-2 text-outline hover:bg-surface-variant rounded-lg transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-6 border-t border-outline-variant flex items-center justify-between">
+<span class="text-sm text-outline font-label">Menampilkan 1-10 dari 42 sesi</span>
+<div class="flex items-center gap-2">
+<button class="p-2 text-outline hover:text-on-surface disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 flex items-center justify-center bg-primary text-surface rounded-lg font-bold text-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high text-on-surface rounded-lg font-medium text-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high text-on-surface rounded-lg font-medium text-sm">3</button>
+<span class="px-2 text-outline">...</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high text-on-surface rounded-lg font-medium text-sm">5</button>
+</div>
+<button class="p-2 text-outline hover:text-on-surface">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secondary Cards Section -->
+<div class="md:col-span-6 bg-surface-container rounded-3xl p-6 border border-outline-variant flex items-center gap-6">
+<div class="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div>
+<h5 class="text-lg font-bold text-on-surface">Prediksi Kelulusan</h5>
+<p class="text-on-surface-variant text-sm mt-1">Berdasarkan frekuensi bimbingan Anda, Anda berada di jalur yang tepat untuk lulus tepat waktu.</p>
+<button class="text-primary font-bold text-sm mt-3 flex items-center gap-1 hover:underline">
+                            Lihat Roadmap Saya
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="md:col-span-6 bg-surface-container-high rounded-3xl p-6 border border-primary/30 flex items-center gap-6 relative overflow-hidden">
+<div class="relative z-10">
+<h5 class="text-lg font-bold text-on-surface">Butuh Konsultasi Mendesak?</h5>
+<p class="text-on-surface-variant text-sm mt-1">Tersedia 3 konsultan aktif yang bisa melayani sesi kilat hari ini.</p>
+<button class="mt-4 px-6 py-2 bg-primary text-surface-container-lowest font-black rounded-full hover:opacity-90 transition-all">Pesan Sekarang</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'wght' 700;">bolt</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

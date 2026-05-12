@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: "#D0BCFF",
+                            container: "#4F378B",
+                            fixed: "#EADDFF"
+                        },
+                        "on-primary": {
+                            DEFAULT: "#381E72",
+                            container: "#EADDFF"
+                        },
+                        surface: {
+                            DEFAULT: "#1C1B1F",
+                            variant: "#49454F",
+                            container: {
+                                lowest: "#0F0D13",
+                                low: "#1D1B20",
+                                DEFAULT: "#211F26",
+                                high: "#2B2930",
+                                highest: "#36343B"
+                            }
+                        },
+                        on: {
+                            surface: {
+                                DEFAULT: "#E6E1E5",
+                                variant: "#CAC4D0"
+                            }
+                        },
+                        outline: {
+                            DEFAULT: "#938F99",
+                            variant: "#49454F"
+                        },
+                        secondary: {
+                            container: "#332D41"
+                        }
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "display": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Public Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #0F0D13;
+            color: #E6E1E5;
+        }
+    </style>
+</head>
+<body class="font-body">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col py-6 z-50 w-64 bg-surface-container-low border-r border-outline-variant">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">school</span>
+</div>
+<div>
+<h1 class="text-lg font-headline font-bold text-on-surface-variant">Portal Akademik</h1>
+<p class="text-[10px] text-outline uppercase tracking-widest font-bold">Sistem Terpadu</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label text-label-large">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label text-label-large">Jadwal Konsultasi</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label text-label-large">Riwayat</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-container-high transition-all hover:translate-x-1 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span class="font-label text-label-large">Permintaan</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-xl px-4 py-3 mx-2 transition-all hover:translate-x-1 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label text-label-large">Pengaturan</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label text-label-large">Bantuan</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 mx-2 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label text-label-large">Keluar</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface-container-lowest border-b border-outline-variant z-40 flex justify-between items-center px-8 shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-sm text-on-surface focus:ring-2 focus:ring-primary transition-all" placeholder="Cari di AcademiaConsult..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-outline" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-outline" data-icon="help">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<button class="flex items-center gap-3 pl-2 pr-1 py-1 rounded-full hover:bg-surface-container-high transition-colors group">
+<span class="text-sm font-medium text-on-surface">Dr. Aris Setiawan</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="person">person</span>
+</div>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 pb-12 px-8 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<div class="mb-8">
+<h2 class="text-3xl font-black text-primary tracking-tight font-headline mb-2">Pengaturan Profil</h2>
+<p class="text-on-surface-variant">Kelola informasi pribadi, ketersediaan konsultasi, dan keamanan akun Anda.</p>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<!-- Profile Section (Left Column) -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Basic Information Card -->
+<section class="bg-surface-container p-8 rounded-3xl border border-outline-variant/50 shadow-sm">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="badge">badge</span>
+<h3 class="text-xl font-bold font-headline">Informasi Profil</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-outline uppercase tracking-wider ml-1">Nama Lengkap</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" type="text" value="Dr. Aris Setiawan, M.T."/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-outline uppercase tracking-wider ml-1">NIP / Nomor Induk</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface" type="text" value="198504122010121001"/>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="text-xs font-bold text-outline uppercase tracking-wider ml-1">Departemen / Program Studi</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface appearance-none">
+<option>Teknik Informatika</option>
+<option>Sistem Informasi</option>
+<option>Teknik Elektro</option>
+</select>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="text-xs font-bold text-outline uppercase tracking-wider ml-1">Biografi Singkat</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-on-surface resize-none" rows="4">Dosen pengampu mata kuliah Arsitektur Perangkat Lunak dan Cloud Computing dengan pengalaman riset selama 10 tahun di bidang sistem terdistribusi.</textarea>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-on-primary font-bold px-8 py-3 rounded-xl hover:opacity-90 active:scale-95 transition-all">Simpan Perubahan</button>
+</div>
+</section>
+<!-- Availability Settings -->
+<section class="bg-surface-container p-8 rounded-3xl border border-outline-variant/50 shadow-sm">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<h3 class="text-xl font-bold font-headline">Pengaturan Ketersediaan</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-xs font-bold text-outline uppercase tracking-wider ml-1">Durasi per Sesi</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 px-4 rounded-lg bg-primary-container text-on-primary-container border border-primary/20 text-sm font-medium">30 Menit</button>
+<button class="py-2 px-4 rounded-lg bg-surface-container-low border border-outline-variant text-sm font-medium hover:bg-surface-variant transition-colors">45 Menit</button>
+<button class="py-2 px-4 rounded-lg bg-surface-container-low border border-outline-variant text-sm font-medium hover:bg-surface-variant transition-colors">60 Menit</button>
+</div>
+</div>
+<div class="space-y-2 pt-2">
+<label class="text-xs font-bold text-outline uppercase tracking-wider ml-1">Lokasi Default</label>
+<div class="flex items-center gap-3 p-3 bg-surface-container-low border border-outline-variant rounded-xl">
+<span class="material-symbols-outlined text-outline">video_camera_front</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-sm text-on-surface w-full" type="text" value="Zoom / Google Meet"/>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container-low border border-outline-variant rounded-xl">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-sm text-on-surface w-full" placeholder="Ruang Kerja (cth: Gdg A R.201)" type="text"/>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant">
+<p class="text-sm font-bold mb-4">Preview Jadwal Mingguan</p>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Senin - Kamis</span>
+<span class="text-primary font-medium">09:00 - 15:00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Jumat</span>
+<span class="text-primary font-medium">09:00 - 11:30</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Sabtu - Minggu</span>
+<span class="text-outline italic">Tidak Tersedia</span>
+</div>
+<button class="w-full mt-4 text-xs text-primary font-bold flex items-center justify-center gap-2 py-2 hover:bg-primary/5 rounded-lg transition-colors">
+                                        EDIT JADWAL LENGKAP <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Secondary Info (Right Column) -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Profile Photo Card -->
+<section class="bg-surface-container p-6 rounded-3xl border border-outline-variant/50 flex flex-col items-center text-center">
+<div class="relative group cursor-pointer mb-4">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a distinguished professor in a modern office. The lighting is soft and flattering with a slight blue tint from digital displays in the background. The overall aesthetic is clean, intellectual, and authoritative, matching a high-end academic platform. The man has a warm but serious expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3_qh2bDS4411_ppWak-1Z5Wz8BEOJk1Z85t2MirStdGu6ojXBr3o4ERZlmge2MBGasBRwyak7FAi97C7fXUeE3CdwwZFEld5Nqi-hX6VPp1IN3YkTE5erZZKtjXxTiVojLaQgBc2kdLBlqcOeS0O2Q0eoPyCu7kMYKJl5se3x2_IBPAmPjpsrlIuYrMwN40E4mMVt1wfZyCN4DAd3I7XKUs595MRy__L2frKauKBMdTNEHRsoFThc9hI3zRFt0GoPOpLTCWDE-u0"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">photo_camera</span>
+</div>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-2 border-surface-container">
+<span class="material-symbols-outlined text-lg">edit</span>
+</div>
+</div>
+<h4 class="font-bold text-lg">Dr. Aris Setiawan</h4>
+<p class="text-sm text-outline mb-4">Update terakhir 2 hari lalu</p>
+<button class="text-xs font-bold text-primary border border-primary/30 px-4 py-2 rounded-full hover:bg-primary/5 transition-colors">
+                            HAPUS FOTO
+                        </button>
+</section>
+<!-- Security & Notification Card -->
+<section class="bg-surface-container p-6 rounded-3xl border border-outline-variant/50">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<h3 class="text-lg font-bold font-headline">Keamanan</h3>
+</div>
+<div class="space-y-6">
+<div class="p-4 bg-surface-container-low border border-outline-variant rounded-2xl hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-1">
+<span class="text-sm font-bold">Ganti Password</span>
+<span class="material-symbols-outlined text-primary text-sm transition-transform group-hover:translate-x-1">arrow_forward_ios</span>
+</div>
+<p class="text-xs text-on-surface-variant">Terakhir diubah 3 bulan yang lalu</p>
+</div>
+<div class="flex items-center justify-between px-2">
+<div>
+<p class="text-sm font-bold">Autentikasi 2-Faktor</p>
+<p class="text-xs text-on-surface-variant">Tambah lapisan keamanan</p>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer shadow-inner">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full shadow-md"></div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<h3 class="text-lg font-bold font-headline">Notifikasi</h3>
+</div>
+<div class="space-y-4 px-2">
+<div class="flex items-center justify-between">
+<span class="text-sm">Email Booking Baru</span>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer shadow-inner">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full shadow-md"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm">Reminder Jadwal</span>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer shadow-inner">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full shadow-md"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Card -->
+<section class="bg-gradient-to-br from-primary-container to-secondary-container p-6 rounded-3xl border border-primary/20">
+<h4 class="text-on-primary-container font-bold text-sm uppercase tracking-widest mb-4">Performa Bulan Ini</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-black/20 p-4 rounded-2xl backdrop-blur-sm">
+<p class="text-2xl font-black text-white">24</p>
+<p class="text-[10px] text-primary-fixed/70 uppercase font-bold">Sesi Selesai</p>
+</div>
+<div class="bg-black/20 p-4 rounded-2xl backdrop-blur-sm">
+<p class="text-2xl font-black text-white">4.9</p>
+<p class="text-[10px] text-primary-fixed/70 uppercase font-bold">Rating Dosen</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</body></html>
